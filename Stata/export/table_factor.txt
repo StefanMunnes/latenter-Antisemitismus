@@ -1,0 +1,97 @@
+---------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /home/kalle/Dropbox/Uni/Masterarbeit/Masterarbeit_SM/Stata/export/table_factor.txt
+  log type:  text
+ opened on:  28 Aug 2018, 11:51:45
+
+. 
+. * Faktoranalyse aller 8 Variablen
+. factor latent01 latent04 latent06-latent10 latent12, blanks(0.3) altdivisor
+(obs=121)
+
+Factor analysis/correlation                      Number of obs    =        121
+    Method: principal factors                    Retained factors =          4
+    Rotation: (unrotated)                        Number of params =         26
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      3.24887      2.98312            0.4061       0.4061
+        Factor2  |      0.26576      0.11376            0.0332       0.4393
+        Factor3  |      0.15199      0.13329            0.0190       0.4583
+        Factor4  |      0.01870      0.04193            0.0023       0.4607
+        Factor5  |     -0.02323      0.08448           -0.0029       0.4578
+        Factor6  |     -0.10771      0.07477           -0.0135       0.4443
+        Factor7  |     -0.18248      0.03340           -0.0228       0.4215
+        Factor8  |     -0.21588            .           -0.0270       0.3945
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(28) =  324.35 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------------------------------------
+        Variable |  Factor1   Factor2   Factor3   Factor4 |   Uniqueness 
+    -------------+----------------------------------------+--------------
+        latent01 |   0.4160                               |      0.7618  
+        latent04 |   0.5722                               |      0.6513  
+        latent06 |   0.7513                               |      0.3544  
+        latent07 |   0.7249                               |      0.4558  
+        latent08 |   0.4413                               |      0.7258  
+        latent09 |   0.6369                               |      0.5253  
+        latent10 |   0.7581                               |      0.4088  
+        latent12 |   0.6952                               |      0.4314  
+    ---------------------------------------------------------------------
+    (blanks represent abs(loading)<.3)
+
+. 
+. screeplot, title("") yline(1, lcolor(gs10)) plotregion(margin(l+5 r+5)) ///
+>            ytitle("Eigenwert") ylab(, angle(0)) ///
+>            xtitle("Faktor") xlab(1(1)8)
+
+. 
+. graph export "export/graph_screeplot.png", replace width(1600)
+(file export/graph_screeplot.png written in PNG format)
+
+. graph close
+
+. 
+. * nach Ausschluss mit den restlichen 6 Variablen
+. factor latent04 latent06 latent07 latent09 latent10 latent12, blanks(0.3) altdivisor
+(obs=167)
+
+Factor analysis/correlation                      Number of obs    =        167
+    Method: principal factors                    Retained factors =          3
+    Rotation: (unrotated)                        Number of params =         15
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      2.91939      2.82086            0.4866       0.4866
+        Factor2  |      0.09853      0.02152            0.0164       0.5030
+        Factor3  |      0.07702      0.15071            0.0128       0.5158
+        Factor4  |     -0.07369      0.07063           -0.0123       0.5035
+        Factor5  |     -0.14432      0.05745           -0.0241       0.4795
+        Factor6  |     -0.20177            .           -0.0336       0.4459
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(15) =  387.09 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    -----------------------------------------------------------
+        Variable |  Factor1   Factor2   Factor3 |   Uniqueness 
+    -------------+------------------------------+--------------
+        latent04 |   0.5793                     |      0.6272  
+        latent06 |   0.7129                     |      0.4478  
+        latent07 |   0.7418                     |      0.4416  
+        latent09 |   0.6439                     |      0.5355  
+        latent10 |   0.7790                     |      0.3892  
+        latent12 |   0.7098                     |      0.4638  
+    -----------------------------------------------------------
+    (blanks represent abs(loading)<.3)
+
+. log close
+      name:  <unnamed>
+       log:  /home/kalle/Dropbox/Uni/Masterarbeit/Masterarbeit_SM/Stata/export/table_factor.txt
+  log type:  text
+ closed on:  28 Aug 2018, 11:51:46
+---------------------------------------------------------------------------------------------------------------------

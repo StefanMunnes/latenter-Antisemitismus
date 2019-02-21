@@ -1,0 +1,209 @@
+%-----------------------------------------------
+% Fragenzähler
+\newcounter{mysection}
+\newcounter{zaehler}[mysection]
+\newcommand{\fr}[2][Frage]{\textbf{#1 \stepcounter{zaehler} \thezaehler} \newline #2 \newline \vspace{-.4cm}}
+  
+%-----------------------------------------------
+% Colorierte Tabelle Umgebung
+\newenvironment{colored}[1]{\par \rowcolors{1}{#1}{white} \renewcommand{\arraystretch}{1.5} \hspace{-.7cm} \begin{tabular}{l}
+}{\par \end{tabular}}
+
+%-----------------------------------------------
+% Weiß-Nicht-Trenner
+% Marker
+\newcommand\tikzmark[1]{
+	\tikz[remember picture,overlay]\coordinate (#1);}
+
+% Linie gestrichelt
+\newcommand\gestrichelt[4]{\tikz[remember picture,overlay]
+	\draw[dashed] ([xshift=#1cm, yshift=0cm]#3.north) -- ([xshift=#2cm,yshift=0cm]#4.south);}
+
+% Linie durchgezogen
+\newcommand\durchgezogen[4]{\tikz[remember picture,overlay]
+	\draw[] ([xshift=#1cm, yshift=0cm]#3.north) -- ([xshift=#2cm,yshift=0cm]#4.south);}
+
+%-----------------------------------------------
+% Für Batterien
+\newenvironment{batterie}[1][r]{%
+  \AMCrep@count=\z@\def\une@rep{\AMCrep@ligne}\AMCrep@init{#1}%
+  \par}%
+  {\AMC@fin@rep}
+
+%-----------------------------------------------
+% Work: Schleife
+%\newcounter{ct} 
+%\newcommand{\itemsloop}[8]{\begin{questionmult}{#1}\scoring{v=-1}
+%\begin{tabular}{l}
+%{\forloop{ct}{1}{\value{ct} < 3}%
+%{\input{\items{ct}}} }
+%\end{tabular}
+
+%-----------------------------------------------
+% 2er Batterie 
+% Beschriftung 2er-Skala
+\newcommand{\headertwo}[3]{\begin{tabular}{m{#1} m{1.2cm} m{1.2cm} m{.1cm}}
+		{} & 
+		\centering{#2} & 
+		\centering{#3} & \\
+	\end{tabular}}
+	
+	% Items 2er-Skala 
+	\newcommand{\itemstwo}[6]{\begin{questionmult}{#1}\scoring{v=-1}
+			\begin{batterie}[o]
+				\begin{tabular}{m{#2} m{1.2cm} m{1.2cm} m{.1cm}}
+					{#3}  & 
+					\centering \correctchoice{}\scoring{b=#4} & 
+					\centering \correctchoice{}\scoring{b=#5} & \\
+				\end{tabular}
+			\end{batterie}
+		\end{questionmult}}
+
+%-----------------------------------------------
+% 3er Batterie 
+% Beschriftung 3er-Skala
+\newcommand{\headerthree}[4]{\begin{tabular}{m{#1} m{1.2cm} m{1.2cm} m{1.2cm} m{.1cm}}
+	{} & 
+		\centering{#2} & 
+		\centering{#3} & 
+		\centering{#4} & \\
+\end{tabular}}
+	
+% Items 3er-Skala 
+\newcommand{\itemsthree}[6]{\begin{questionmult}{#1}\scoring{v=-1}
+	\begin{batterie}[o]
+		\begin{tabular}{m{#2} m{1.2cm} m{1.2cm} m{1.2cm} m{.1cm}}
+			{#3}  & 
+				\centering \correctchoice{}\scoring{b=#4} & 
+				\centering \correctchoice{}\scoring{b=#5} & 
+				\centering \correctchoice{}\scoring{b=#6} & \\
+		\end{tabular}
+	\end{batterie}
+\end{questionmult}}
+
+%-----------------------------------------------
+% 4er Batterie 
+% Beschriftung 4er-Skala
+\newcommand{\headerfour}[5]{\begin{tabular}{m{#1} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{.1cm}}
+	{} & 
+		\centering{#2} & 
+		\centering{#3} & 
+		\centering{#4} & 
+		\centering{#5} & \\
+	\end{tabular}}
+	
+% Items 4er-Skala 
+\newcommand{\itemsfour}[7]{\begin{questionmult}{#1}\scoring{v=-1}
+	\begin{batterie}[o]
+		\begin{tabular}{m{#2} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{.1cm}}
+			{#3}  & 
+				\centering \correctchoice{}\scoring{b=#4} & 
+				\centering \correctchoice{}\scoring{b=#5} & 
+				\centering \correctchoice{}\scoring{b=#6} & 								
+				\centering \correctchoice{}\scoring{b=#7} & \\
+		\end{tabular}
+	\end{batterie}
+\end{questionmult}}
+
+%-----------------------------------------------
+% 5er Batterie 
+% Beschriftung 5er-Skala
+\newcommand{\headerfive}[6]{\begin{tabular}{m{#1} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{.1cm}}
+	{} & 
+		\centering{#2} & 
+		\centering{#3} & 
+		\centering{#4} & 
+		\centering{#5} & 		
+		\centering{#6} & \\
+	\end{tabular}}
+	
+% Items 5er-Skala 
+\newcommand{\itemsfive}[8]{\begin{questionmult}{#1}\scoring{v=-1}
+\begin{batterie}[o]
+	\begin{tabular}{m{#2} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{.1cm}}
+		{#3}  & 
+			\centering \correctchoice{}\scoring{b=#4} & 
+			\centering \correctchoice{}\scoring{b=#5} & 
+			\centering \correctchoice{}\scoring{b=#6} & 					
+			\centering \correctchoice{}\scoring{b=#7} & 								
+			\centering \correctchoice{}\scoring{b=#8} & \\
+		\end{tabular}
+	\end{batterie}
+\end{questionmult}}
+
+%-----------------------------------------------
+% 6er Batterie 
+% Beschriftung 6er-Skala
+\newcommand{\headersix}[7]{\begin{tabular}{m{#1} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{.1cm}}
+	{} & 
+		\centering{#2} & 
+		\centering{#3} & 
+		\centering{#4} & 
+		\centering{#5} & 		
+		\centering{#6} & 		
+		\centering{#7} & \\
+\end{tabular}}
+	
+% Items 6er-Skala 
+\newcommand{\itemssix}[9]{\begin{questionmult}{#1}\scoring{v=-1}
+	\begin{batterie}[o]
+		\begin{tabular}{m{#2} m{1.2cm} m{1.2cm}  m{1.2cm} m{1.2cm} m{1.2cm} m{1.2cm} m{.1cm}}
+			{#3}  & 
+				\centering \correctchoice{}\scoring{b=#4} & 
+				\centering \correctchoice{}\scoring{b=#5} & 
+				\centering \correctchoice{}\scoring{b=#6} & 					
+				\centering \correctchoice{}\scoring{b=#7} & 										
+				\centering \correctchoice{}\scoring{b=#8} & 								
+				\centering \correctchoice{}\scoring{b=#9} & \\
+			\end{tabular}
+		\end{batterie}
+\end{questionmult}}
+
+%-----------------------------------------------
+% 7er-Skala  
+% Beschriftung 7er-Skala
+\newcommand{\headerseven}[8]{\begin{tabular}{m{5.8cm} m{.9cm}  m{.9cm}  m{.9cm} m{.9cm} m{.9cm} m{.9cm}  m{.9cm} m{.1cm}}
+		{#1} & 
+		\centering\sf\footnotesize{#2} & 
+		\centering\sf\footnotesize{#3} & 
+		\centering\sf\footnotesize{#4} & 
+		\centering\sf\footnotesize{#5} & 
+		\centering\sf\footnotesize{#6} & 
+		\centering\sf\footnotesize{#7} & 
+		\centering\sf\footnotesize{#8} 
+	\end{tabular}}
+	
+% Beschriftung 7er-Skala gestaucht
+\newcommand{\headersevenst}[8]{\begin{tabular}{m{5.4cm} m{1.7cm}  m{.2cm}  m{.9cm} m{.9cm} m{.9cm} m{.9cm}  m{1.5cm} m{.1cm}}
+	{#1} & 
+		\centering\sf\footnotesize{#2} & 
+		\centering\sf\footnotesize{#3} & 
+		\centering\sf\footnotesize{#4} & 
+		\centering\sf\footnotesize{#5} & 
+		\centering\sf\footnotesize{#6} & 
+		\centering\sf\footnotesize{#7} & 
+		\centering\sf\footnotesize{#8} 
+\end{tabular}}
+		
+% Items 7er-Skala 
+\newcommand{\itemsseven}[2]{\begin{questionmult}{#1}\scoring{v=-1}
+	\begin{batterie}[o]
+		\begin{tabular}{ m{6.2cm} m{.9cm}  m{.9cm}  m{.9cm} m{.9cm} m{.9cm} m{.9cm}  m{.9cm} m{.1cm}}
+			{#2} & 
+				\centering  \correctchoice{}\scoring{b=1} & 
+				\centering  \correctchoice{}\scoring{b=2} &
+				\centering  \correctchoice{}\scoring{b=3} &
+				\centering  \correctchoice{}\scoring{b=4} &
+				\centering  \correctchoice{}\scoring{b=5} &
+				\centering  \correctchoice{}\scoring{b=6} &
+				\centering  \correctchoice{}\scoring{b=7} &   \\   
+		\end{tabular}
+	\end{batterie}
+\end{questionmult}}
+
+
+
+   			
+
+
+

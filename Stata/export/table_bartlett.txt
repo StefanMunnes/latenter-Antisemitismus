@@ -1,0 +1,16 @@
+    
+Determinant of the correlation matrix
+Det                =     0.037
+ 
+ 
+Bartlett test of sphericity
+    
+Chi-square         =           342.417
+Degrees of freedom =                45
+p-value            =             0.000
+H0: variables are not intercorrelated
+ 
+ 
+Kaiser-Meyer-Olkin Measure of Sampling Adequacy
+KMO               =     0.828
+ 

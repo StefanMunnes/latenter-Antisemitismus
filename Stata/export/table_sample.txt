@@ -1,0 +1,38 @@
+	No.	%
+Was ist Ihr Geschlecht		
+männlich	71	29.22%
+weiblich	170	69.96%
+weiteres	2	0.82%
+Total	243	100.00%
+
+Wie alt sind Sie zum jetzigen Zeitpunkt		
+16-20 Jahre	61	25.00%
+21-25 Jahre	135	55.33%
+26-30 Jahre	38	15.57%
+31 Jahre und älter	10	4.10%
+Total	244	100.00%
+
+Wie beurteilen Sie ganz allgemein die heutige wirtschaftliche Lage in Deutschlan		
+sehr gut	42	17.36%
+gut	113	46.69%
+teils gut, teils schlecht	77	31.82%
+schlecht	9	3.72%
+sehr schlecht	1	0.41%
+Total	242	100.00%
+
+Wie stark interessieren Sie sich für Politik?		
+sehr stark	66	27.05%
+stark	70	28.69%
+mittel	82	33.61%
+wenig	24	9.84%
+gar nicht	2	0.82%
+Total	244	100.00%
+
+Wenn Sie an Ihre eigenen politischen Ansichten denken, wo würden Sie sich auf di		
+links	55	22.82%
+	122	50.62%
+	43	17.84%
+	20	8.30%
+rechts	1	0.41%
+Total	241	100.00%
+

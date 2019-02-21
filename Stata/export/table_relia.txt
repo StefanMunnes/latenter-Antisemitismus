@@ -1,0 +1,108 @@
+---------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /home/kalle/Dropbox/Uni/Masterarbeit/Masterarbeit_SM/Stata/export/table_relia.txt
+  log type:  text
+ opened on:  28 Aug 2018, 11:51:46
+
+. 
+. * Split-Half-R. (mit korrigierter Testverdoppelung)
+. egen latent_nonmiss = rownonmiss(latent04 latent06 latent07 ///
+>                                  latent09 latent10 latent12)
+
+. 
+. egen half_1 = rowmean(latent04 latent07 latent10) if latent_nonmiss == 4
+(230 missing values generated)
+
+. egen half_2 = rowmean(latent06 latent09 latent12) if latent_nonmiss == 4
+(230 missing values generated)
+
+. 
+. quietly: corr half_1 half_2
+
+. display (2 * r(rho)) / (1 + r(rho))
+.8092609
+
+. 
+. 
+. * Cronbachs Alpha (interne Konsistenz) 
+. alpha latent04 latent06 latent07 latent09 latent10 latent12, asis item
+
+Test scale = mean(unstandardized items)
+
+                                                            average
+                             item-test     item-rest       interitem
+Item         |  Obs  Sign   correlation   correlation     covariance      alpha
+-------------+-----------------------------------------------------------------
+latent04     |  221    +       0.6906        0.5097        .4093843      0.8369
+latent06     |  236    +       0.7411        0.6083        .3967559      0.8099
+latent07     |  221    +       0.8110        0.6749        .3419785      0.7975
+latent09     |  228    +       0.6772        0.5165        .4162027      0.8288
+latent10     |  201    +       0.8211        0.7229         .349133      0.7863
+latent12     |  227    +       0.7049        0.5603        .4083991      0.8192
+-------------+-----------------------------------------------------------------
+Test scale   |                                             .3866527      0.8398
+-------------------------------------------------------------------------------
+
+. 
+. 
+. * Kongenerische R. (Raykovs composite reliability)
+. quietly: sem (latent_AS -> latent04 latent06 latent07 ///
+>                            latent09 latent10 latent12), ///
+>                 latent(latent_AS ) nocapslatent //
+
+. 
+. relicoef
+
+  Raykov's factor reliability coefficient
++-----------------------------------------+
+  Factor              |    Coefficient 
++-----------------------------------------+
+  latent_AS           |    0.854
++-----------------------------------------+
+  Note: We seek coefficients >= 0.7
+
+. 
+. estat gof, stat(rmsea indices)
+
+----------------------------------------------------------------------------
+Fit statistic        |      Value   Description
+---------------------+------------------------------------------------------
+Population error     |
+               RMSEA |      0.093   Root mean squared error of approximation
+ 90% CI, lower bound |      0.044
+         upper bound |      0.143
+              pclose |      0.069   Probability RMSEA <= 0.05
+---------------------+------------------------------------------------------
+Baseline comparison  |
+                 CFI |      0.965   Comparative fit index
+                 TLI |      0.942   Tucker-Lewis index
+----------------------------------------------------------------------------
+
+. estat eqgof
+
+Equation-level goodness of fit
+
+------------------------------------------------------------------------------
+             |             Variance            |
+     depvars |    fitted  predicted   residual | R-squared        mc      mc2
+-------------+---------------------------------+------------------------------
+observed     |                                 |
+    latent04 |  .9120444   .3101186   .6019259 |  .3400257  .5831172  .3400257
+    latent06 |  .7393595   .3809042   .3584552 |  .5151814  .7177614  .5151814
+    latent07 |  1.140378   .6396935   .5006843 |  .5609487  .7489651  .5609487
+    latent09 |  .8316539   .3489405   .4827134 |  .4195742  .6477455  .4195742
+    latent10 |  .8277814   .5227168   .3050646 |  .6314672  .7946491  .6314672
+    latent12 |  .7364192   .3755029   .3609164 |  .5099037  .7140754  .5099037
+-------------+---------------------------------+------------------------------
+     overall |                                 |  .8636158
+------------------------------------------------------------------------------
+mc  = correlation between depvar and its prediction
+mc2 = mc^2 is the Bentler-Raykov squared multiple correlation coefficient
+
+. 
+. log close
+      name:  <unnamed>
+       log:  /home/kalle/Dropbox/Uni/Masterarbeit/Masterarbeit_SM/Stata/export/table_relia.txt
+  log type:  text
+ closed on:  28 Aug 2018, 11:51:49
+---------------------------------------------------------------------------------------------------------------------

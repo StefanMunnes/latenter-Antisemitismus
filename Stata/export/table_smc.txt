@@ -1,0 +1,15 @@
+
+Squared multiple correlations of variables with all other variables
+
+    -----------------------
+        Variable |     smc 
+    -------------+---------
+        latent01 |  0.1863 
+        latent04 |  0.3000 
+        latent06 |  0.5602 
+        latent07 |  0.4672 
+        latent08 |  0.2204 
+        latent09 |  0.4019 
+        latent10 |  0.5229 
+        latent12 |  0.4973 
+    -----------------------

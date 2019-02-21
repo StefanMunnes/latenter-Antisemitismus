@@ -1,0 +1,388 @@
+%%---------------------------------------------
+% Präambel
+\documentclass[12 pt,german,a4paper]{article}
+
+\usepackage[utf8]{inputenc}    
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel} 
+
+\renewcommand*\rmdefault{lmss}
+\usepackage{setspace} 
+
+\usepackage{color, colortbl}
+\definecolor{grau}{rgb}{.9,.9,.9} 
+
+\usepackage{bbding}
+\usepackage{dingbat}
+
+\usepackage[table]{xcolor} 
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{fp}
+\usepackage{textpos}
+\usepackage{dashrule}
+\usepackage{tikz}
+\usepackage{paralist} 
+
+% Für Fragebogen
+%---------------------------------------------
+% Bienvenue Stylepaket
+\usepackage{automultiplechoice}    
+% LMES Stylepaket
+\usepackage{zusatz}
+
+%---------------------------------------------
+% AMC anpassen
+
+\AMCtext{message}{\footnotesize \color{gray}}
+\AMCtext{draft}{}
+
+% Vertikaler Abstand zwischen den einzelnen Fragen
+\def\AMCbeginQuestion#1#2{\vspace{0cm}} 
+
+%Größe Antwortboxen
+%\AMCboxDimensions{size=1.7ex}
+
+%---------------------------------------------
+% Beginn Dokument
+
+\begin{document}
+\setlength{\parindent}{0pt}
+
+% Anzahl individualsierter Fragebögen
+\onecopy{1}{
+	 
+\stepcounter{mysection}
+
+%---------------------------------------------
+% Fragebogen
+\section*{Allgemeine Angaben}
+Zu Beginn beantworten Sie bitte einige allgemeine Fragen. \\
+
+\fr{Was ist Ihr Geschlecht?}
+\vspace{-0.2cm}
+\begin{questionmult}{sex}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{männlich}\scoring{b=0} 
+		\correctchoice{weiblich}\scoring{b=1}
+		\correctchoice{weiteres}\scoring{b=3}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Wie alt sind Sie zum jetzigen Zeitpunkt?}
+\vspace{-0.2cm}
+\begin{questionmult}{age}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{16-20 Jahre}\scoring{b=1}
+		\correctchoice{21-25 Jahre}\scoring{b=2}
+		\correctchoice{26-30 Jahre}\scoring{b=3}
+		\correctchoice{31 Jahre und älter}\scoring{b=4}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Wie beurteilen Sie ganz allgemein die heutige wirtschaftliche Lage in Deutschland?}
+\vspace{-0.2cm}
+\begin{questionmult}{lage}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{sehr gut}\scoring{b=1}
+		\correctchoice{gut}\scoring{b=2}
+		\correctchoice{teils gut, teils schlecht}\scoring{b=3}
+		\correctchoice{schlecht}\scoring{b=4}
+		\correctchoice{sehr schlecht}\scoring{b=5}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Wie stark interessieren Sie sich für Politik?}
+\vspace{-0.2cm}
+\begin{questionmult}{polint}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{sehr stark}\scoring{b=1} 
+		\correctchoice{stark}\scoring{b=2}
+		\correctchoice{mittel}\scoring{b=3}
+		\correctchoice{wenig}\scoring{b=4}
+		\correctchoice{gar nicht}\scoring{b=5}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}	
+
+
+\fr{Viele Leute verwenden die Begriffe "`links"' und "`rechts"', wenn es darum geht unterschiedliche politische Einstellungen zu kennzeichnen.} \\
+
+\headerfive{7.8cm}{links}{}{}{}{rechts} \\
+\vspace{-.5cm}
+	\itemsfive{v5a}{8cm}{Wenn Sie an Ihre eigenen politischen Ansichten denken, wo würden Sie sich auf dieser Skala einstufen?}{1}{2}{3}{4}{5} \\  	
+
+
+
+
+\pagebreak
+
+\section*{Gesellschaftspolitische Einstellung}
+In diesem Abschnitt finden Sie einige allgemeine Aussagen über gesellschaftliche und politische Einstellungen. Bitte geben Sie an, inwieweit Sie diesen zustimmen.
+\\
+
+\fr{Wir hätten heute weniger Probleme wenn sich der Mensch nicht so sehr von seiner Natur entfernt hätte.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent01}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Mir fällt es schwer zu glauben, dass eine kleine Minderheit in der Lage ist uns alle zu lenken.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent02}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Wir müssen endlich aufhören uns gegeneinander aufhetzen zu lassen.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent03}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Unter uns gibt es Mächte, deren einziges Ziel die Zerstörung unserer Gemeinschaft ist.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent04}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+
+\pagebreak
+
+
+\fr{Wir leben zwar in Nationalstaaten, aber die Menschen sind viel zu verschieden, als dass es noch eine Rolle spielen sollte.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent05}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Ereignisse wie die Flüchtlingskrise sind Resultat eines gezielten Plans, der nicht von allen durchschaut wird.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent06}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{In Anbetracht der vielen Konflikte auf der Welt müssen wir endlich aufwachen und erkennen wo die eigentlichen Schuldigen sitzen.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent07}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Wir sollten nicht künstlich in die natürliche Ordnung der nationalen Gemeinschaften eingreifen.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent08}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\pagebreak
+
+\fr{Die Gier einer hemmungslosen Finanzelite ist das Grundproblem unserer Gesellschaft.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent09}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Wenn es uns nicht gelingt, die im Verborgenen agierende Weltregierung zu beseitigen, wird sie die Welt in den Abgrund stürzen.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent10}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Unsere kapitalistische Gesellschaft zeichnet sich dadurch aus, dass alle Menschen strukturellen Zwängen unterliegen und niemand die volle Kontrolle darüber hat.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent11}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+\vspace{0.3cm}
+
+\fr{Die, die uns regieren, handeln nicht im Interesse des Volkes.}
+\vspace{-0.2cm}
+\begin{questionmult}{latent12}\scoring{v=-1}
+	\begin{choices}[o]
+		\correctchoice{stimme voll zu}\scoring{b=1} 
+		\correctchoice{stimme eher zu}\scoring{b=2}
+		\correctchoice{stimme eher nicht zu}\scoring{b=3}
+		\correctchoice{stimme gar nicht zu}\scoring{b=4}
+		\vspace{-0.05cm}
+		\\ . . . . . . . . . . . 
+		\vspace{-0.05cm}
+		\correctchoice{keine Angabe}\scoring{b=88}
+	\end{choices}
+\end{questionmult} 
+
+
+\pagebreak
+
+
+\section*{Beziehung zum Judentum}
+\fr{Im Folgenden sehen Sie Aussagen über Jüdinnen und Juden wie sie immer wieder geäußert werden. Bitte geben Sie an, inwieweit Sie diesen zustimmen.} \\
+
+\vspace{-0.5cm}
+
+\tikzmark{f4a} % Auskommentieren, falls keine Trennlinie 
+
+\headerfive{5.65cm}{stimme voll zu}{stimme eher zu}{stimme eher nicht zu}{stimme gar nicht zu}{keine Angabe} \\
+
+\begin{colored}{gray!25} % Auskommentieren, falls keine Colorierung der Zeilen
+	\itemsfive{mAS1}{6cm}{Auch heute noch ist der Einfluss der Juden zu groß.}{1}{2}{3}{4}{88} \\  	
+	\itemsfive{mAS2}{6cm}{Die Juden arbeiten mehr als andere Menschen mit üblen Tricks, um das zu erreichen, was sie wollen.}{1}{2}{3}{4}{88} \\ 	
+	\itemsfive{mAS3}{6cm}{Die Juden haben einfach etwas Besonderes und Eigentümliches an sich und passen nicht so recht zu uns.}{1}{2}{3}{4}{88} \\ 	
+	\itemsfive{mAS4}{6cm}{Juden haben in Deutschland zu viel Einfluss.}{1}{2}{3}{4}{88} \\ 
+	\itemsfive{mAS5}{6cm}{Durch ihr Verhalten sind Juden an ihren Verfolgungen mitschuldig.}{1}{2}{3}{4}{88} \\
+	\itemsfive{lAS1}{6cm}{Ich glaube, dass sich viele nicht trauen, ihre wirkliche Meinung über Juden zu sagen.}{1}{2}{3}{4}{88} \\  
+	\itemsfive{lAS2}{6cm}{Mir ist das ganze Thema "`Juden"' irgendwie unangenehm.}{1}{2}{3}{4}{88} \\  
+	\itemsfive{lAS3}{6cm}{Was ich über Juden denke, sage ich nicht jedem.}{1}{2}{3}{4}{88} \\ 
+\end{colored} % Auskommentieren, falls keine Colorierung der Zeilen
+
+\tikzmark{f4b} % Auskommentieren, falls keine Trennlinie 
+
+\gestrichelt{12.6}{12.6}{f4a}{f4b} % manuell positionieren
+%\durchgezogen{12.6}{12.6}{f4a}{f4b} % manuell positionieren
+
+\vspace{3cm}
+
+Vielen Dank für Ihre Mitarbeit.
+
+
+\clearpage\thispagestyle{empty}\null\newpage
+
+
+%\def\AMCntextGoto{\par{\bf\emph{Please code the answer on
+%the separate answer sheet.}}}
+%  \AMCassociation{\id}
+}
+
+
+%\csvreader[head to column names]{\ExamInstanceDir/students.csv}{}{\klausur}
+
+\end{document}
+%---------------------------------------------
+% Ende
+
+
+
+
